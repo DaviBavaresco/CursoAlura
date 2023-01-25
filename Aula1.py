@@ -1,28 +1,31 @@
-print("--------------------")
-print("teste de adivinhação")
-print("--------------------")
+print("*********************************")
+print("Bem vindo ao jogo de Adivinhação!")
+print("*********************************")
 
-numeroSecreto = 55
+numero_secreto = 42
+total_de_tentativas = 3
 
-tentativas = 3
-while(tentativas >0):
-    print("tentativa: ", tentativas)
-    chute = int(input("chute algum numero "))
-    print("o numero dito foi ", chute)
+for rodada in range(1, total_de_tentativas + 1):
+    print("Tentativa {} de {}".format(rodada, total_de_tentativas))
+    chute_str = input("Digite um número entre 1 e 100: ")
+    print("Você digitou " , chute_str)
+    chute = int(chute_str)
 
-    acertou = chute == numeroSecreto
-    maior = chute > numeroSecreto
-    menor = chute < numeroSecreto
+    if(chute < 1 or chute > 100):
+        print("Você deve digitar um número entre 1 e 100!")
+        continue
+
+    acertou = chute == numero_secreto
+    maior   = chute > numero_secreto
+    menor   = chute < numero_secreto
 
     if(acertou):
-        print("Você acertou")
+        print("Você acertou!")
+        break
     else:
         if(maior):
-            print("Você errou, você chutou um número maior que o correto")
-        if(menor):
-            print("Você errou, você chutou um número menor que o correto")
-    tentativas-=1
+            print("Você errou! O seu chute foi maior do que o número secreto.")
+        elif(menor):
+            print("Você errou! O seu chute foi menor do que o número secreto.")
 
-
-print("----Fim de jogo----")
-
+print("Fim do jogo")
